@@ -9,6 +9,6 @@ use Symfony\Component\Console\Application;
 
 $application = new Application();
 
-$application->add(new \App\Command\ProductsSeeder($containerBuilder->get('products')));
+$application->add(new \App\Command\ProductsAbstractSeeder($containerBuilder->get('products')));
 
 $application->run();

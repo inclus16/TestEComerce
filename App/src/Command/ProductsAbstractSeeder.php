@@ -4,10 +4,10 @@
 namespace App\Command;
 
 
-use App\Command\Abstractions\Seeder;
+use App\Command\Abstractions\AbstractSeeder;
 use App\Entities\Product;
 
-class ProductsSeeder extends Seeder
+class ProductsAbstractSeeder extends AbstractSeeder
 {
     private const COUNT_TO_SEED = 20;
 
