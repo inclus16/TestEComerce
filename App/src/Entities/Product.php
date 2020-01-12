@@ -28,6 +28,12 @@ class Product
      */
     private float $cost;
 
+    public function __construct(string $name, float $cost)
+    {
+        $this->name = $name;
+        $this->cost = $cost;
+    }
+
     public function getId(): int
     {
         return $this->id;
@@ -39,7 +45,7 @@ class Product
     }
 
 
-    public function setName($name): self
+    public function setName(string $name): self
     {
         $this->name = $name;
         return $this;
