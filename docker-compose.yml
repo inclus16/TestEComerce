@@ -1,0 +1,30 @@
+version: '3.0'
+
+services:
+  nginx:
+    image: nginx
+    volumes:
+      - ./docker/nginx/conf.d/default.nginx:/etc/nginx/conf.d/default.conf
+      - ./app/public/:/var/www/html/public/
+    ports:
+      - 80:80
+
+  php:
+    build:
+      context: ./docker/php
+    volumes:
+      - ./app/:/var/www/html/
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+     - POSTGRES_USER=test
+     - POSTGRES_PASSORD=password
+     - POSTGRES_DB=test
+  memcached:
+    image: memcached
+  adminer:
+   image: adminer
+   ports:
+     - 8030:8030
