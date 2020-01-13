@@ -21,7 +21,8 @@ $dotenv = new Dotenv();
 $dotenv->load(__DIR__ . '/../.env');
 require __DIR__ . '/../config/router.php';
 AnnotationRegistry::registerLoader([$loader, 'loadClass']);
-
+ header("Access-Control-Allow-Origin: *");
+ header("Access-Control-Allow-Methods: *");
 $containerBuilder = require __DIR__ . './../config/services.php';
 $request = Request::createFromGlobals();
 
