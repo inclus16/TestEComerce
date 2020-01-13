@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="14e5a447-e03f-4bf5-9d89-bd053a368469" name="Default Changelist" comment="" />
+    <list default="true" id="14e5a447-e03f-4bf5-9d89-bd053a368469" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +31,7 @@
     <select />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/app" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -92,11 +94,11 @@
       <recent name="C:\projects\php\TestEComerce" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\projects\vagrant\data\TestEComerce\app\src\Validation" />
+      <recent name="C:\projects\vagrant\data\TestEComerce\app\src\Validation\Constraints" />
       <recent name="C:\projects\vagrant\data\TestEComerce\app\config\doctrine" />
       <recent name="C:\projects\vagrant\data\TestEComerce\App" />
       <recent name="C:\projects\php\TestEComerce\config" />
-      <recent name="C:\projects\php\TestEComerce" />
-      <recent name="C:\projects\php\TestEComerce\config\doctrine" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -132,7 +134,8 @@
       <workItem from="1578700633886" duration="2834000" />
       <workItem from="1578707302330" duration="7052000" />
       <workItem from="1578714408727" duration="882000" />
-      <workItem from="1578791653082" duration="9473000" />
+      <workItem from="1578791653082" duration="16073000" />
+      <workItem from="1578898943353" duration="5093000" />
     </task>
     <servers />
   </component>

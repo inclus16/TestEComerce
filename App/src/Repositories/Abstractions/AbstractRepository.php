@@ -11,9 +11,11 @@ use Doctrine\ORM\Mapping\ClassMetadata;
 
 abstract class AbstractRepository extends EntityRepository
 {
+    protected string $entityName;
+
     public function __construct(EntityManager $entityManager)
     {
-        parent::__construct($entityManager, new ClassMetadata(Product::class));
+        parent::__construct($entityManager, new ClassMetadata($this->entityName));
     }
     public abstract function add($entity);
 

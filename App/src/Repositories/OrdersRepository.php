@@ -4,14 +4,18 @@
 namespace App\Repositories;
 
 
+use App\Entities\Order;
 use App\Repositories\Abstractions\AbstractRepository;
 
 class OrdersRepository extends AbstractRepository
 {
 
+    protected string $entityName = Order::class;
+
     public function add($entity)
     {
-        // TODO: Implement add() method.
+        $this->_em->persist($entity);
+        $this->_em->flush($entity);
     }
 
     public function addRange(array $entities)

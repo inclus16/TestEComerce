@@ -6,5 +6,5 @@ use Symfony\Component\Routing\RouteCollection;
 
 $routes = new RouteCollection();
 $routes->add('order_create', new Route('/order', [
-        '_controller' => [OrderController::class, 'index']]
+        '_controller' => [OrderController::class, 'create']],[],[],null,[],['POST']
 ));

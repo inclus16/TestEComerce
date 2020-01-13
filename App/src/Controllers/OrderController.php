@@ -4,24 +4,26 @@
 namespace App\Controllers;
 
 
+use App\Http\Requests\OrderCreateRequest;
 use App\Repositories\OrdersRepository;
 use App\Repositories\ProductsRepository;
+use App\Services\Orders\OrdersManager;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class OrderController
 {
-    private OrdersRepository $orders;
+    private OrdersManager $orders;
 
     public function __construct(ContainerBuilder $containerBuilder)
     {
-        $this->orders=$containerBuilder->get('orders');
+        $this->orders = $containerBuilder->get('orders_manager');
     }
 
-    public function index(Request $request)
+    public function create(OrderCreateRequest $orderCreateRequest)
     {
-        dd($this->orders->findAll());
-        return new Response('awewae', 200);
+        return new JsonResponse(['id' => $this->orders->create($orderCreateRequest->getData())]);
     }
 }

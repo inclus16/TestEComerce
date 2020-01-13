@@ -11,6 +11,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class OrderStatus
 {
+    public const CREATED = 1;
+
+    public const PAYED = 2;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")

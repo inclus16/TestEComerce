@@ -23,7 +23,7 @@ class Order
     /**
      * @var OrderStatus
      * @ORM\OneToOne(targetEntity="OrderStatus")
-     * @ORM\JoinColumn(name="order_id",referencedColumnName="id")
+     * @ORM\JoinColumn(name="status_id",referencedColumnName="id")
      */
     private OrderStatus $status;
 
@@ -37,7 +37,7 @@ class Order
      */
     private iterable $products;
 
-    public function __construct(array $products = null)
+    public function __construct(array $products = [])
     {
         $this->products = new ArrayCollection($products);
     }

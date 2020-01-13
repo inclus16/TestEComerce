@@ -4,10 +4,12 @@
 namespace App\Repositories;
 
 
+use App\Entities\OrderStatus;
 use App\Repositories\Abstractions\AbstractRepository;
 
 class OrderStatusesRepository extends AbstractRepository
 {
+    protected string $entityName = OrderStatus::class;
 
     public function add($entity)
     {
