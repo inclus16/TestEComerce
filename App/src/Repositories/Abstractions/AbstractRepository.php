@@ -20,4 +20,6 @@ abstract class AbstractRepository extends EntityRepository
     public abstract function add($entity);
 
     public abstract function addRange(array $entities);
+
+    public abstract function update($entity);
 }

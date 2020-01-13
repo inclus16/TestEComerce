@@ -20,4 +20,9 @@ class OrderStatusesRepository extends AbstractRepository
     {
         // TODO: Implement addRange() method.
     }
+
+    public function update($entity)
+    {
+        // TODO: Implement update() method.
+    }
 }

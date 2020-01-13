@@ -1,5 +1,6 @@
 <?php
 
+use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\ErrorHandler\ErrorHandler;
 use Symfony\Component\EventDispatcher\EventDispatcher;
@@ -16,9 +17,11 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 
 /** @var ClassLoader $loader */
 $loader = require_once __DIR__ . '/../vendor/autoload.php';
+$dotenv = new Dotenv();
+$dotenv->load(__DIR__.'/../.env');
 require __DIR__ . '/../config/router.php';
 AnnotationRegistry::registerLoader([$loader, 'loadClass']);
-if ($_SERVER['APP_DEBUG']) {
+if ($_ENV['APP_DEBUG']) {
     Debug::enable();
 }
 ErrorHandler::register();

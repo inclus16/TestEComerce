@@ -4,7 +4,9 @@
 namespace App\Entities;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\PersistentCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repositories\OrdersRepository")
@@ -35,7 +37,7 @@ class Order
      *      inverseJoinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")}
      *      )
      */
-    private iterable $products;
+    private Collection $products;
 
     public function __construct(array $products = [])
     {
@@ -52,7 +54,7 @@ class Order
         return $this->id;
     }
 
-    public function getProducts(): ArrayCollection
+    public function getProducts(): PersistentCollection
     {
         return $this->products;
     }

@@ -39,4 +39,9 @@ class ProductsRepository extends AbstractRepository
             $this->_em->flush();
         }
     }
+
+    public function update($entity)
+    {
+        // TODO: Implement update() method.
+    }
 }
