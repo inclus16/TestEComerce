@@ -18,27 +18,28 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 /** @var ClassLoader $loader */
 $loader = require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = new Dotenv();
-$dotenv->load(__DIR__.'/../.env');
+$dotenv->load(__DIR__ . '/../.env');
 require __DIR__ . '/../config/router.php';
 AnnotationRegistry::registerLoader([$loader, 'loadClass']);
-if ($_ENV['APP_DEBUG']) {
-    Debug::enable();
-}
-ErrorHandler::register();
 
 $containerBuilder = require __DIR__ . './../config/services.php';
 $request = Request::createFromGlobals();
 
 $matcher = new UrlMatcher($routes, new RequestContext());
-
 $dispatcher = new EventDispatcher();
 $dispatcher->addSubscriber(new RouterListener($matcher, new RequestStack()));
+if ($_ENV['APP_DEBUG'] == "true") {
+    Debug::enable();
+} else {
+    $dispatcher->addListener('kernel.exception', function (\Symfony\Component\HttpKernel\Event\ExceptionEvent $event) {
+       \Sys\ExceptionHandler::onError($event);
+    });
+}
 
 $controllerResolver = new ControllerResolver($containerBuilder);
 $argumentResolver = new ArgumentResolver($containerBuilder);
 
 $kernel = new HttpKernel($dispatcher, $controllerResolver, new RequestStack(), $argumentResolver);
-
 $response = $kernel->handle($request);
 $response->send();
 

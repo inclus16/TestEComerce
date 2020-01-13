@@ -10,6 +10,7 @@ use App\Http\Requests\Dto\OrderPaymentDto;
 use App\Repositories\OrdersRepository;
 use App\Repositories\OrderStatusesRepository;
 use App\Repositories\ProductsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpClient\HttpClient;
 
 class OrdersManager
@@ -60,5 +61,10 @@ class OrdersManager
             $this->orders->update($this->orders->find($dto->orderId)->setStatus($this->orderStatuses->find(OrderStatus::PAYED)));
         }
         return $isOperationSuccess;
+    }
+
+    public function list(): array
+    {
+        return $this->orders->findAll();
     }
 }

@@ -32,10 +32,16 @@ final class ArgumentResolver implements ArgumentResolverInterface
         $reflectionController = new \ReflectionClass($controller[0]);
         $parameters = $reflectionController->getMethod($controller[1])->getParameters();
         foreach ($parameters as $parameter) {
+            $argumentClass = $parameter->getClass();
             $argumentClassName = $parameter->getClass()->name;
-            $argumentObject = new $argumentClassName($request, $this->container);
-            if ($argumentObject instanceof AbstractRequest) {
+            $argumentParentClass = $argumentClass->getParentClass();
+            if ($argumentParentClass !== false && $argumentParentClass->name === AbstractRequest::class) {
+                $argumentObject = new $argumentClassName($request, $this->container);
                 $argumentObject->init();
+            } else if ($argumentClassName !== Request::class) {
+                $argumentObject = new $parameter($request);
+            } else {
+                $argumentObject = $request;
             }
             $arguments[] = $argumentObject;
         }

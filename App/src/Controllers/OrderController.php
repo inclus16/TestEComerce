@@ -5,13 +5,11 @@ namespace App\Controllers;
 
 
 use App\Http\Requests\OrderCreateRequest;
-use App\Repositories\OrdersRepository;
-use App\Repositories\ProductsRepository;
+use App\Http\Responses\JsonApiResponse;
 use App\Services\Orders\OrdersManager;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class OrderController
 {
@@ -22,8 +20,13 @@ class OrderController
         $this->orders = $containerBuilder->get('orders_manager');
     }
 
-    public function create(OrderCreateRequest $orderCreateRequest)
+    public function create(OrderCreateRequest $orderCreateRequest): JsonResponse
     {
-        return new JsonResponse(['id' => $this->orders->create($orderCreateRequest->getData())]);
+        return JsonApiResponse::success(['id' => $this->orders->create($orderCreateRequest->getData())]);
+    }
+
+    public function list(Request $request): JsonResponse
+    {
+        return JsonApiResponse::success(['orders' => $this->orders->list()]);
     }
 }
